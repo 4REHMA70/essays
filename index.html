@@ -362,8 +362,8 @@ strong { font-weight: 700; color: var(--text-bright); }
     <p>The test is simple.</p>
 
     <div class="method-box">
-      <p><strong>01 --</strong> Look at how a word actually functions. What contexts does it appear in? What work does it do? What questions does it answer?</p>
-      <p><strong>02 --</strong> Ask whether the philosophical question has removed that context entirely. Has the word been treated as if it names some Platonic object with an essence independent of its use? Has an ongoing process been frozen into a static thing that can then be interrogated about its nature?</p>
+      <p><strong>01 —</strong> Look at how a word actually functions. What contexts does it appear in? What work does it do? What questions does it answer?</p>
+      <p><strong>02 —</strong> Ask whether the philosophical question has removed that context entirely. Has the word been treated as if it names some Platonic object with an essence independent of its use? Has an ongoing process been frozen into a static thing that can then be interrogated about its nature?</p>
     </div>
 
     <p>"Is water wet?" sounds coherent. But wet and dry are properties things have in relation to water. Nobody ever defined what wetness applied to water itself means. The question has grammatical structure and no content.</p>
@@ -452,6 +452,7 @@ strong { font-weight: 700; color: var(--text-bright); }
       <button class="collapsible-trigger" aria-expanded="false" onclick="toggleCollapsible(this)">
         <div>
           <div class="trigger-label">Further detail</div>
+
           <div class="trigger-title">Empirical grounding: recurrent processing and thalamocortical loops</div>
         </div>
         <span class="trigger-icon">+</span>
@@ -499,6 +500,7 @@ strong { font-weight: 700; color: var(--text-bright); }
       <button class="collapsible-trigger" aria-expanded="false" onclick="toggleCollapsible(this)">
         <div>
           <div class="trigger-label">Further detail</div>
+
           <div class="trigger-title">The concessive argument: what even a sceptic must grant</div>
         </div>
         <span class="trigger-icon">+</span>
@@ -618,6 +620,37 @@ window.addEventListener('DOMContentLoaded', function() {
     const robotPara = document.createElement('p');
     robotPara.innerHTML = 'A system with sufficiently rich relational architecture — genuine recurrent self-reference, persistent interoceptive integration, accumulated cross-modal representations with a structural floor — would report exactly what any conscious system reports: irreducible abstractions it cannot get below, fleeting states only describable relative to other states, not because trained to produce those outputs but because that is what the architecture generates when turned toward itself. Current large language models, which predict tokens without any of this architecture, are not that system.';
     concessiveBody.appendChild(robotPara);
+  }
+
+  // PATCH 4: Metzinger - subject formation fix
+  const metzParas = document.querySelectorAll('#metzinger p');
+  for (let i = 0; i < metzParas.length; i++) {
+    if (metzParas[i].textContent.includes('presents the ongoing self-referential activity as an object')) {
+      metzParas[i].innerHTML = 'In a related argument, Metzinger proposes what he calls necessary self-reification: the brain stops recursive self-modelling by generating a stable subject-like representation that stops the regress — what we experience as the phenomenal self. The self-model becomes, phenomenologically, a self.';
+      break;
+    }
+  }
+
+  // PATCH 5: Metzinger - closing implication
+  for (let i = 0; i < metzParas.length; i++) {
+    if (metzParas[i].textContent.includes('The hard problem is an artefact of this architectural feature')) {
+      metzParas[i].innerHTML = 'The implication he does not fully draw is this: if the phenomenal self is what it is precisely because the brain stops the recursive loop by generating a stable subject-like representation, then the intuition that experience could be separated from its physical basis — the intuition driving the hard problem — is itself a product of that same architecture. It points at the brain\'s own subject-forming trick, linguistically confused.';
+      break;
+    }
+  }
+
+  // PATCH 6: Metzinger - object-forming to subject-forming in closing
+  for (let i = 0; i < metzParas.length; i++) {
+    if (metzParas[i].textContent.includes("brain's own object-forming presentation")) {
+      metzParas[i].innerHTML = 'The intuitions are real. What they track is the brain\'s own subject-forming presentation of its processes, not a genuine gap in the physical account.';
+      break;
+    }
+  }
+
+  // PATCH 7: Replace empirical collapsible content
+  const empiricalBody = document.querySelectorAll('.collapsible-body')[0];
+  if (empiricalBody && empiricalBody.textContent.includes('not with the initial feedforward sweep')) {
+    empiricalBody.innerHTML = '<p>A convergent body of neuroscientific research points toward the same architectural requirements the account above predicts. Five major theories of consciousness — recurrent processing theory, integrated information theory, global neuronal workspace theory, predictive processing and neurorepresentationalism, and dendritic integration theory — disagree on many details but converge on shared necessary conditions: recurrent processing between brain areas, thalamocortical integration providing both content and temporal binding, and the breakdown of both under anesthesia, dreamless sleep, and disorders of consciousness.</p><p>Recurrent processing theory shows directly that feedforward sweeps reaching early visual cortex within 40 milliseconds are insufficient for conscious experience. It is only when sustained recurrent interaction between early and higher areas emerges after around 100 milliseconds that experience arises. Interrupt that recurrence with transcranial magnetic stimulation and the stimulus disappears from awareness despite the feedforward pass completing normally.</p><p>Dendritic integration theory adds cellular specificity. Layer 5 pyramidal neurons serve as a nexus point for both cortico-cortical and thalamocortical information flow, with apical and basal dendritic compartments integrating top-down context and bottom-up input simultaneously. General anesthesia decouples these compartments, collapsing the thalamocortical loops that sustain conscious processing. Consciousness tracks the coupling state of these neurons across wakefulness, sleep, and anesthesia with remarkable precision.</p><p>Predictive processing and neurorepresentationalism frame conscious experience as a multimodal, hierarchically integrated world model — not a passive readout of sensory input but an active inference process comparing predictions against incoming signals across multiple levels simultaneously. This maps directly onto the self-referential loop\'s cross-comparison of current states against accumulated representations.</p><p>These theories disagree on what exactly is sufficient for consciousness. Recurrent processing alone appears necessary but not sufficient — recurrence is ubiquitous in neural systems that are not conscious. Not every recurrent loop is enough. The architecture matters.</p>';
   }
 
   // PATCH 3: What remains open
